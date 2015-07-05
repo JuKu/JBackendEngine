@@ -64,3 +64,5 @@ With this module, you can create a socket.io server very fast (uses the com.coru
        socketIOClient.sendEvent("newEventName", "Answer String");
       }
     });`
+
+You can customize host, port and so on in your configuration files in the config directory.
