@@ -11,7 +11,7 @@ import com.jukusoft.jbackendengine.service.IService;
  */
 public interface ISocketIOService extends IService {
 
-    public void addEventListener (String event, Class<Object> className, DataListener<Object> dataListener);
+    public <T> void addEventListener (String event, Class<T> className, DataListener<T> dataListener);
     public void addConnectListener (ConnectListener connectListener);
     public void addDisconnectListener (DisconnectListener disconnectListener);
     public SocketIOServer getSocketIOServer ();

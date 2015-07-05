@@ -28,7 +28,7 @@ public class SocketIOService implements ISocketIOService {
     }
 
     @Override
-    public void addEventListener(String event, Class<Object> className, DataListener<Object> dataListener) {
+    public <T> void addEventListener(String event, Class<T> className, DataListener<T> dataListener) {
         server.addEventListener(event, className, dataListener);
     }
 

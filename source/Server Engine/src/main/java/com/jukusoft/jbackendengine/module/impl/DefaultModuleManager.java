@@ -93,6 +93,17 @@ public class DefaultModuleManager implements IModuleManager {
         this.loadModules(moduleList);
     }
 
+    @Override
+    public void loadAndStart(File moduleDir) {
+        try {
+            this.loadModulesFromDir(moduleDir);
+            this.startAllModules();
+        } catch (IOException e) {
+            backendEngine.getLoggerManager().warn("Couldnt load modules " + e.getStackTrace() + ".");
+            e.printStackTrace();
+        }
+    }
+
     private void loadModules (List<IModule> moduleList) {
         //check dependencies
         Map<IModule,Boolean> result = this.moduleDependencieManager.process(moduleList);

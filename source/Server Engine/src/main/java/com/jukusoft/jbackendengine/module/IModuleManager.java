@@ -21,6 +21,7 @@ public interface IModuleManager extends IManager {
     public boolean hasExclusiveEngineRights (IModule module);
     public void loadModulesFromFile (File moduleFile) throws IOException;
     public void loadModulesFromDir (File moduleDir) throws IOException;
+    public void loadAndStart (File moduleDir);
     public void startModule (String name);
     public void startAllModules ();
     public List<ModuleInfo> listAllModuleInfo ();

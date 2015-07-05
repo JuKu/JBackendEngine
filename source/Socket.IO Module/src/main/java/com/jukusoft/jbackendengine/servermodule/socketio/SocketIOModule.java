@@ -114,6 +114,7 @@ public class SocketIOModule extends Module {
             });
 
             SocketIOService socketIOService = new SocketIOService(getBackendEngine(), config);
+            backendEngine.addService("socketio", socketIOService);
         }
     }
 
