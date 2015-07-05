@@ -35,11 +35,8 @@ With this module, you can create a socket.io server very fast (uses the com.coru
     DefaultBackendEngine defaultBackendEngine = new DefaultBackendEngine();
     IModuleManager moduleManager = defaultBackendEngine.getModuleManager();
    
-    //load all modules from modules directory
-    moduleManager.loadModulesFromDir(new File("./modules"));
-            
-    //start all modules
-    moduleManager.startAllModules();
+    //load all modules from modules directory and start modules
+    moduleManager.loadAndStart(new File("./modules"));
             
     //get socket.io service, socket.io works like a background service in this engine
     ISocketIOService socketIOService = (ISocketIOService) defaultBackendEngine.getService("socketio");
