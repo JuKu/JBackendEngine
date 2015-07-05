@@ -31,11 +31,9 @@ Look to https://github.com/JuKu/JBackendEngine/wiki/First-Start .
 ## Module Socket.IO
 With this module, you can create a socket.io server very fast (uses the com.corundumstudio.socketio netty-socketio project).
 
-`public static void main (String[] args) {
-   DefaultBackendEngine defaultBackendEngine = new DefaultBackendEngine();
+`DefaultBackendEngine defaultBackendEngine = new DefaultBackendEngine();
    IModuleManager moduleManager = defaultBackendEngine.getModuleManager();
    
-   try {
     //load all modules from modules directory
     moduleManager.loadModulesFromDir(new File("./modules"));
             
@@ -68,9 +66,4 @@ With this module, you can create a socket.io server very fast (uses the com.coru
        socketIOClient.sendEvent("newEventName", "Answer String");
       }
     });
-   } catch (IOException e) {
-    e.printStackTrace();
-   } catch (IServiceNotFoundException e) {
-    e.printStackTrace();
-   }
- }`
+ `
