@@ -19,3 +19,6 @@ The databases Hazelcast (Hazelcast.org), Cassandra and MySQL are supported by de
  
  (1) for this feature you need a module, which adds support for this option
  (2) Task Manager is using 2 Executor Service for this. You can change corePoolSize and maxPoolSize in the configuration files.
+
+## First Start
+Look to https://github.com/JuKu/JBackendEngine/wiki/First-Start .
