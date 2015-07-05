@@ -27,3 +27,8 @@ The databases Hazelcast (Hazelcast.org), Cassandra and MySQL are supported by de
 
 ## First Start
 Look to https://github.com/JuKu/JBackendEngine/wiki/First-Start .
+
+## Module Socket.IO
+With this module, you can create a socket.io server very fast (uses the com.corundumstudio.socketio netty-socketio project).
+
+
