@@ -50,6 +50,10 @@ public abstract class AbstractBackendEngine implements IBackendEngine {
     private Map<String,Object> dataMap = new HashMap<String,Object>();
 
     public AbstractBackendEngine(File configDir) {
+        if (!configDir.exists()) {
+            configDir.mkdirs();
+        }
+
         this.localSettings = new LocalServerSettings(configDir);
         this.taskManager = new DefaultTaskManager(4, 8, 4);
         this.notificationManager = new DefaultNotificationManager();
