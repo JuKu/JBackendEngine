@@ -5,7 +5,7 @@ You can replace every manager or module.
 The databases Hazelcast (Hazelcast.org), Cassandra and MySQL are supported by default (You have to put the modules jar file into the modules directory, so the backend engine can find them).
 
 ## Features
- - Full Module System (you can package modules and load them at runtime to extend the backend engine)
+ - Full Module System (you can package modules and load them at runtime to extend the backend engine or to cleanup your code)
  - Fully configurable
  - Configuration Management (local and distributed(1))
  - Session Store
