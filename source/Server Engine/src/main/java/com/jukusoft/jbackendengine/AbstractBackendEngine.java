@@ -72,6 +72,9 @@ public abstract class AbstractBackendEngine implements IBackendEngine {
         }
 
         this.localSettings = new LocalServerSettings(configDir);
+        this.loggerManager = new DefaultLoggerManager();
+        this.databaseConnectorManager = new DefaultDatabaseConnectorManager();
+        this.moduleManager = new DefaultModuleManager(this);
 
         int corePoolSize = this.localSettings.getInteger("TaskManager.corePoolSize", 4);
         int maxPoolSize = this.localSettings.getInteger("TaskManager.maxPoolSize", 8);
@@ -80,9 +83,6 @@ public abstract class AbstractBackendEngine implements IBackendEngine {
         this.taskManager = new DefaultTaskManager(corePoolSize, maxPoolSize, schedulerPoolSize);
         this.sessionStore = new LocalSessionStore(this);
         this.notificationManager = new DefaultNotificationManager();
-        this.moduleManager = new DefaultModuleManager(this);
-        this.databaseConnectorManager = new DefaultDatabaseConnectorManager();
-        this.loggerManager = new DefaultLoggerManager();
     }
 
     @Override
