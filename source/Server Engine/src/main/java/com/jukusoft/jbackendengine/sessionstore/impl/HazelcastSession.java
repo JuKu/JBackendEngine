@@ -21,8 +21,9 @@ public class HazelcastSession implements ISession {
     private Map<String,String> dataMap = new HashMap<String,String>();
     private Long dbInserted = 0l;
 
-    public HazelcastSession (ISessionStore sessionStore) {
+    public HazelcastSession (ISessionStore sessionStore, String sessionKey) {
         this.sessionStore = sessionStore;
+        this.sessionKey = sessionKey;
     }
 
     public HazelcastSession () {
@@ -35,7 +36,7 @@ public class HazelcastSession implements ISession {
 
     @Override
     public String getSessionKey() {
-        return null;
+        return this.sessionKey;
     }
 
     /*

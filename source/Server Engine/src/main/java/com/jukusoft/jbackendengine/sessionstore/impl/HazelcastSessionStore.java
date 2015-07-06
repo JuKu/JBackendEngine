@@ -48,7 +48,7 @@ public class HazelcastSessionStore implements ISessionStore {
             throw new SessionNotFoundException("session with sessionKey " + sessionKey + " not found.");
         }
 
-        HazelcastSession session = new HazelcastSession(this);
+        HazelcastSession session = new HazelcastSession(this, sessionKey);
         String value = null;
 
         try {

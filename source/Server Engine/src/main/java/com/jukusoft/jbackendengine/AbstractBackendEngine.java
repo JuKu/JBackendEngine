@@ -18,6 +18,7 @@ import com.jukusoft.jbackendengine.serversettings.impl.LocalServerSettings;
 import com.jukusoft.jbackendengine.service.IService;
 import com.jukusoft.jbackendengine.service.exception.IServiceNotFoundException;
 import com.jukusoft.jbackendengine.sessionstore.ISessionStore;
+import com.jukusoft.jbackendengine.sessionstore.impl.LocalSessionStore;
 import com.jukusoft.jbackendengine.task.ITaskManager;
 import com.jukusoft.jbackendengine.task.impl.DefaultTaskManager;
 import com.jukusoft.jbackendengine.uniqueID.IUniqueUserIDGenerator;
@@ -56,6 +57,7 @@ public abstract class AbstractBackendEngine implements IBackendEngine {
         }
 
         this.localSettings = new LocalServerSettings(configDir);
+        this.sessionStore = new LocalSessionStore();
         this.taskManager = new DefaultTaskManager(4, 8, 4);
         this.notificationManager = new DefaultNotificationManager();
         this.moduleManager = new DefaultModuleManager(this);
