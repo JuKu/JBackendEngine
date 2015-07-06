@@ -10,6 +10,7 @@ import com.jukusoft.jbackendengine.manager.IManager;
 import com.jukusoft.jbackendengine.manager.exception.IManagerNotFoundException;
 import com.jukusoft.jbackendengine.module.IModule;
 import com.jukusoft.jbackendengine.module.IModuleManager;
+import com.jukusoft.jbackendengine.module.impl.DefaultModuleManager;
 import com.jukusoft.jbackendengine.notification.INotificationManager;
 import com.jukusoft.jbackendengine.notification.impl.DefaultNotificationManager;
 import com.jukusoft.jbackendengine.serversettings.IServerSettings;
@@ -57,6 +58,7 @@ public abstract class AbstractBackendEngine implements IBackendEngine {
         this.localSettings = new LocalServerSettings(configDir);
         this.taskManager = new DefaultTaskManager(4, 8, 4);
         this.notificationManager = new DefaultNotificationManager();
+        this.moduleManager = new DefaultModuleManager(this);
         this.databaseConnectorManager = new DefaultDatabaseConnectorManager();
         this.loggerManager = new DefaultLoggerManager();
     }
