@@ -14,7 +14,7 @@ import com.jukusoft.jbackendengine.backendengine.uniqueID.IUniqueUserIDGenerator
 /**
  * Created by Justin on 05.07.2015.
  */
-public interface IEditableBackendEngine {
+public interface IEditableBackendEngine extends IBackendEngine {
 
     public IUserManager getUserManager (UserAuthentificationMode authentificationMode);
     public void setUserManager (IUserManager userManager);

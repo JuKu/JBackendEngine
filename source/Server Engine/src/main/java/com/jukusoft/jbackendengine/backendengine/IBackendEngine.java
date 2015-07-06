@@ -20,7 +20,7 @@ import com.jukusoft.jbackendengine.backendengine.validation.exception.ModuleAcce
 /**
  * Created by Justin on 02.07.2015.
  */
-public interface IBackendEngine extends IEditableBackendEngine {
+public interface IBackendEngine {
 
     public int getBuildNumber ();
     public void setBuildNumber (int buildNumber);

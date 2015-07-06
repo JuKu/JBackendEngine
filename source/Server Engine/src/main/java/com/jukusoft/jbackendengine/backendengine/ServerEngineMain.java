@@ -1,5 +1,6 @@
 package com.jukusoft.jbackendengine.backendengine;
 
+import com.jukusoft.jbackendengine.backendengine.factory.BackendEngineFactory;
 import com.jukusoft.jbackendengine.backendengine.impl.DefaultBackendEngine;
 
 import java.io.File;
@@ -10,12 +11,11 @@ import java.io.File;
 public class ServerEngineMain {
 
     public static void main (String[] args) {
-        DefaultBackendEngine defaultBackendEngine = new DefaultBackendEngine();
-        defaultBackendEngine.getModuleManager().loadAndStart(new File("./modules"));
+        IEditableBackendEngine backendEngine = BackendEngineFactory.createNewDefaultBackendEngine();
 
-        System.out.println("JBackendEngine Version " + defaultBackendEngine.getBackendEngineVersion() + "");
+        System.out.println("JBackendEngine Version " + backendEngine.getBackendEngineVersion() + "");
 
-        defaultBackendEngine.shutdown();
+        backendEngine.shutdown();
     }
 
 }

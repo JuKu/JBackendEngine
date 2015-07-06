@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * Created by Justin on 02.07.2015.
  */
-public abstract class AbstractBackendEngine implements IBackendEngine {
+public abstract class AbstractBackendEngine implements IEditableBackendEngine {
 
     protected int BUILD_NUMBER = 2;
     private final String backendEngineVersion = "1.0.0";

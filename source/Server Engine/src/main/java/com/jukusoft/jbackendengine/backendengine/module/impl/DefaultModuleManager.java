@@ -96,6 +96,7 @@ public class DefaultModuleManager implements IModuleManager {
     @Override
     public void loadAndStart(File moduleDir) {
         try {
+            this.backendEngine.getLoggerManager().debug("Load modules from directory " + moduleDir.getAbsolutePath() + ".");
             this.loadModulesFromDir(moduleDir);
             this.startAllModules();
         } catch (IOException e) {
@@ -177,7 +178,14 @@ public class DefaultModuleManager implements IModuleManager {
 
     private void startModules (List<IModule> moduleList) {
         for (IModule module : moduleList) {
-            this.startModule(module);
+            try {
+                ModuleInfo moduleInfo = ModuleUtils.getModuleInfo(module);
+                backendEngine.getLoggerManager().debug("Start module " + moduleInfo.moduleName() + " version " + moduleInfo.version() + ".");
+                this.startModule(module);
+            } catch (InvalidModuleException e) {
+                backendEngine.getLoggerManager().warn("InvaludModuleException in module " + module.getClass().getName() + ".");
+                e.printStackTrace();
+            }
         }
     }
 
