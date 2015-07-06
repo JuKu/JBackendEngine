@@ -289,13 +289,14 @@ public abstract class AbstractBackendEngine implements IBackendEngine {
     public void shutdown() {
         this.getLoggerManager().debug("Shutdown backend engine now.");
 
-        //cleanup
-
         //shutdown all modules
         this.getModuleManager().shutdownAllModules();
 
         //shutdown task manager
         this.getTaskManager().shutdown();
+        this.getTaskManager().terminate();
+
+        //cleanup
     }
 
     @Override

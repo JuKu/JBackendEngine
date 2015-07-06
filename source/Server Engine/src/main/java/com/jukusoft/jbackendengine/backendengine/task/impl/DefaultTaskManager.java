@@ -69,6 +69,8 @@ public class DefaultTaskManager implements ITaskManager {
         // This will make the executor accept no new threads
         // and finish all existing threads in the queue
         this.executorService.shutdown();
+
+        this.scheduledExecutorService.shutdown();
     }
 
     @Override
@@ -76,6 +78,7 @@ public class DefaultTaskManager implements ITaskManager {
         try {
             // Wait until all threads are finish
             this.executorService.awaitTermination(60, TimeUnit.SECONDS);
+            this.scheduledExecutorService.awaitTermination(60, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
