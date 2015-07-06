@@ -30,7 +30,12 @@ public class DefaultModuleLoader implements IModuleLoader {
             }
         };
 
+        if (!modulesDir.exists()) {
+            modulesDir.mkdirs();
+        }
+
         File[] files = modulesDir.listFiles(filenameFilter);
+
         ClassLoader classLoader = new URLClassLoader(fileArrayToURLs(files));
         List<Class<IModule>> moduleClasses = extractClassesFromJARs(files, classLoader);
         return createModuleObjects(moduleClasses);
