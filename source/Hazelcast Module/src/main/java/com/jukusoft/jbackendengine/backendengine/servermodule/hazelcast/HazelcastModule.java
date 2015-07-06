@@ -44,7 +44,7 @@ public class HazelcastModule extends Module {
                     //generate serverID
                     Long serverID = hazelcastInstance.getIdGenerator("server-id-generator").newId();
 
-                    backendEngine.setServerID(serverID);
+                    backendEngine.requestEditableBackendEngine(this).setServerID(serverID);
                 }
 
                 if (backendEngine.getLocalSettings().getBoolean("HazelcastModule.addTopicLogger")) {
