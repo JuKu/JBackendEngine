@@ -15,6 +15,8 @@ public class ServerEngineMain {
         defaultBackendEngine.getModuleManager().loadAndStart(new File("./modules"));
 
         System.out.println("JBackendEngine Version " + defaultBackendEngine.getBackendEngineVersion() + "");
+
+        defaultBackendEngine.shutdown();
     }
 
 }
