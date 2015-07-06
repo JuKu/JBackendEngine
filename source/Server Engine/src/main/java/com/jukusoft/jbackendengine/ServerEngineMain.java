@@ -12,7 +12,7 @@ public class ServerEngineMain {
 
     public static void main (String[] args) {
         DefaultBackendEngine defaultBackendEngine = new DefaultBackendEngine();
-        defaultBackendEngine.getModuleManager().loadAndStart(new File("./module"));
+        defaultBackendEngine.getModuleManager().loadAndStart(new File("./modules"));
 
         System.out.println("JBackendEngine Version " + defaultBackendEngine.getBackendEngineVersion() + "");
     }

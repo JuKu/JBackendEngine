@@ -23,7 +23,7 @@ public class DefaultBackendEngineBuilder {
 
     public IBackendEngine buildBackendEngine (IRunAtBackendEngineStartRunnable runAtBackendEngineStartRunnable) {
         DefaultBackendEngine backendEngine = new DefaultBackendEngine();
-        backendEngine.getModuleManager().loadAndStart(new File("./module"));
+        backendEngine.getModuleManager().loadAndStart(new File("./modules"));
 
         return backendEngine;
     }
