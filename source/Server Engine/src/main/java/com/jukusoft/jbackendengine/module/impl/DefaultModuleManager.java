@@ -104,6 +104,13 @@ public class DefaultModuleManager implements IModuleManager {
         }
     }
 
+    @Override
+    public void shutdownAllModules() {
+        for (Map.Entry<String,IModule> entry : this.moduleMap.entrySet()) {
+            entry.getValue().stop();
+        }
+    }
+
     private void loadModules (List<IModule> moduleList) {
         //check dependencies
         Map<IModule,Boolean> result = this.moduleDependencieManager.process(moduleList);

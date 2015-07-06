@@ -48,6 +48,7 @@ public interface IBackendEngine extends IEditableBackendEngine {
     public void addService (String name, IService service);
     public void removeService (String name);
     public IService getService (String name) throws IServiceNotFoundException;
+    public void shutdown ();
     public void startEngine (IEditableBackendEngine backendEngine);
 
 }
