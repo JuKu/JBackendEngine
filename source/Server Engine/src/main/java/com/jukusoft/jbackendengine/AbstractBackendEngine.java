@@ -51,14 +51,34 @@ public abstract class AbstractBackendEngine implements IBackendEngine {
     private Long serverID = 0l;
     private Map<String,Object> dataMap = new HashMap<String,Object>();
 
+    public AbstractBackendEngine(IServerSettings localSettings) {
+        this.localSettings = localSettings;
+
+        int corePoolSize = this.localSettings.getInteger("TaskManager.corePoolSize", 4);
+        int maxPoolSize = this.localSettings.getInteger("TaskManager.maxPoolSize", 8);
+        int schedulerPoolSize = this.localSettings.getInteger("TaskManager.schedulerPoolSize", 4);
+
+        this.taskManager = new DefaultTaskManager(corePoolSize, maxPoolSize, schedulerPoolSize);
+        this.sessionStore = new LocalSessionStore(this);
+        this.notificationManager = new DefaultNotificationManager();
+        this.moduleManager = new DefaultModuleManager(this);
+        this.databaseConnectorManager = new DefaultDatabaseConnectorManager();
+        this.loggerManager = new DefaultLoggerManager();
+    }
+
     public AbstractBackendEngine(File configDir) {
         if (!configDir.exists()) {
             configDir.mkdirs();
         }
 
         this.localSettings = new LocalServerSettings(configDir);
-        this.sessionStore = new LocalSessionStore();
-        this.taskManager = new DefaultTaskManager(4, 8, 4);
+
+        int corePoolSize = this.localSettings.getInteger("TaskManager.corePoolSize", 4);
+        int maxPoolSize = this.localSettings.getInteger("TaskManager.maxPoolSize", 8);
+        int schedulerPoolSize = this.localSettings.getInteger("TaskManager.schedulerPoolSize", 4);
+
+        this.taskManager = new DefaultTaskManager(corePoolSize, maxPoolSize, schedulerPoolSize);
+        this.sessionStore = new LocalSessionStore(this);
         this.notificationManager = new DefaultNotificationManager();
         this.moduleManager = new DefaultModuleManager(this);
         this.databaseConnectorManager = new DefaultDatabaseConnectorManager();

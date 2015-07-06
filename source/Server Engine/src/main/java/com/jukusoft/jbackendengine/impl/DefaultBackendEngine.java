@@ -3,6 +3,7 @@ package com.jukusoft.jbackendengine.impl;
 import com.jukusoft.jbackendengine.AbstractBackendEngine;
 import com.jukusoft.jbackendengine.IEditableBackendEngine;
 import com.jukusoft.jbackendengine.IRunAtBackendEngineStartRunnable;
+import com.jukusoft.jbackendengine.serversettings.IServerSettings;
 
 import java.io.File;
 
@@ -14,6 +15,10 @@ public class DefaultBackendEngine extends AbstractBackendEngine {
     public DefaultBackendEngine (IRunAtBackendEngineStartRunnable runAtBackendEngineStartRunnable) {
         super(new File("./config/"));
         runAtBackendEngineStartRunnable.run(this);
+    }
+
+    public DefaultBackendEngine (IServerSettings serverSettings) {
+        super(serverSettings);
     }
 
     public DefaultBackendEngine (File configDir) {
