@@ -41,6 +41,9 @@ public class DefaultModuleLoader implements IModuleLoader {
 
         ClassLoader classLoader = new URLClassLoader(fileArrayToURLs(files));
         List<Class<IModule>> moduleClasses = extractClassesFromJARs(files, classLoader);
+
+        System.out.println("" + moduleClasses.size() + " modules found.");
+
         return createModuleObjects(moduleClasses);
     }
 
