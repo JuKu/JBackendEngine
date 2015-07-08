@@ -72,9 +72,9 @@ public class DefaultModuleLoader implements IModuleLoader {
     }
 
     public boolean isModuleClass (Class<?> cls) {
-        System.out.println("isModuleClass() " + cls.getName() + ".");
+        //System.out.println("isModuleClass() " + cls.getName() + ".");
 
-        try {
+        /*try {
             for (Class<?> cls1 : cls.getInterfaces()) {
                 System.out.println("Found interface " + cls1.getName() + " in class " + cls.getName() + ".");
 
@@ -84,9 +84,9 @@ public class DefaultModuleLoader implements IModuleLoader {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
-        return false;
+        return IModule.class.isAssignableFrom(cls) || Module.class.isAssignableFrom(cls);
     }
 
     public IModule createModuleObject (Class<IModule> moduleClass) throws IllegalAccessException, InstantiationException {
