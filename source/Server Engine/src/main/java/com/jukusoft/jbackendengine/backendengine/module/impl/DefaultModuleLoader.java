@@ -72,10 +72,18 @@ public class DefaultModuleLoader implements IModuleLoader {
     }
 
     public boolean isModuleClass (Class<?> cls) {
-        for (Class<?> cls1 : cls.getInterfaces()) {
-            if ((cls1.equals(IModule.class) || cls1.equals(Module.class)) && ModuleUtils.containsModuleInfo(cls1)) {
-                return true;
+        System.out.println("isModuleClass() " + cls.getName() + ".");
+
+        try {
+            for (Class<?> cls1 : cls.getInterfaces()) {
+                System.out.println("Found interface " + cls1.getName() + " in class " + cls.getName() + ".");
+
+                if ((cls1.equals(IModule.class) || cls1.equals(Module.class)) && ModuleUtils.containsModuleInfo(cls)) {
+                    return true;
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return false;
