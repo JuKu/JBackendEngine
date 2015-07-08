@@ -11,5 +11,13 @@
 
     <artifactId>com.jukusoft.example.localserversettings</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.jukusoft</groupId>
+            <artifactId>com.jukusoft.jbackendengine.serverbackendengine</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
