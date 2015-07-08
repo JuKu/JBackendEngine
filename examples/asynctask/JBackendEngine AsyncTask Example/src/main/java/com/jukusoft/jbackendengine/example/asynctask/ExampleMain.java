@@ -31,14 +31,14 @@ public class ExampleMain {
             @Override
             public void onComplete(Map<String, Object> map) {
                 System.out.println("Task completed.");
-
-                //after task complete you can shutdown the engine
-                backendEngine.shutdown();
             }
         };
 
         //add asynctask to task manager queue
         backendEngine.getTaskManager().executeAsyncTask(asyncTask);
+
+        //after task complete you can shutdown the engine
+        backendEngine.shutdown();
     }
 
 }
