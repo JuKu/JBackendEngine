@@ -29,6 +29,12 @@ public class DefaultTaskManager implements ITaskManager {
     }
 
     @Override
+    public void executeAsyncTask(Runnable runnable) {
+        this.executorService.execute(runnable);
+        this.taskCounter++;
+    }
+
+    @Override
     public <T> Future<T> submitAndWaitWhileWorking(Callable<T> callable) {
         return this.executorService.submit(callable);
     }

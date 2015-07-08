@@ -12,6 +12,7 @@ import java.util.concurrent.*;
 public interface ITaskManager {
 
     public void executeAsyncTask (AsyncTask task);
+    public void executeAsyncTask (Runnable runnable);
     public <T> Future<T> submitAndWaitWhileWorking (Callable<T> callable);
     public <T> List<Future<T>> invokeAll (Collection<? extends Callable<T>> collection) throws InterruptedException;
     public <T> T invokeAny (Collection<? extends Callable<T>> collection) throws ExecutionException, InterruptedException;
