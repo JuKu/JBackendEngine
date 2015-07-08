@@ -31,10 +31,13 @@ public class DefaultModuleLoader implements IModuleLoader {
         };
 
         if (!modulesDir.exists()) {
+            System.out.println("directory modules doesnt exists, creating directory modules.");
             modulesDir.mkdirs();
         }
 
         File[] files = modulesDir.listFiles(filenameFilter);
+
+        System.out.println("" + files.length + " .jar files in directory " + modulesDir.getAbsolutePath() + " found.");
 
         ClassLoader classLoader = new URLClassLoader(fileArrayToURLs(files));
         List<Class<IModule>> moduleClasses = extractClassesFromJARs(files, classLoader);
