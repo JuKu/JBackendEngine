@@ -92,6 +92,8 @@ proguard/
 # Log Files
 *.log
 
+settings.xml
+
 
 ### Maven template
 target/
