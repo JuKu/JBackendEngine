@@ -134,10 +134,14 @@ public class DefaultModuleLoader implements IModuleLoader {
             if (ent.getName().toLowerCase().endsWith(".class")) {
                 try {
                     Class<?> cls = classLoader.loadClass(ent.getName().substring(0, ent.getName().length() - 6).replace('/', '.'));
+
                     if (isModuleClass(cls)) {
                         classList.add((Class<IModule>) cls);
                     }
                 } catch (ClassNotFoundException e) {
+                    System.err.println("Cannot load class " + ent.getName() + ".");
+                    e.printStackTrace();
+                } catch (NoClassDefFoundError e) {
                     System.err.println("Cannot load class " + ent.getName() + ".");
                     e.printStackTrace();
                 }
