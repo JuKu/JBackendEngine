@@ -14,6 +14,7 @@
         <module>Hazelcast Module</module>
         <module>Cassandra Module</module>
         <module>MySQL Module</module>
+        <module>PostgreSQL Module</module>
     </modules>
 
     <name>JBackendEngine</name>
