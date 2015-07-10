@@ -142,6 +142,9 @@ public class DefaultModuleLoader implements IModuleLoader {
                 } catch (ClassNotFoundException e) {
                     System.err.println("Cannot load class " + ent.getName() + ".");
                     //e.printStackTrace();
+                } catch (NoClassDefFoundError e) {
+                    System.err.println("NoClassDefFoundError in class " + ent.getName() + ".");
+                    //e.printStackTrace();
                 }
             }
         }
