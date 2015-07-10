@@ -18,20 +18,24 @@ import com.jukusoft.jbackendengine.serverbackendengine.servermodule.postgresql.c
 )
 public class PostgreSQLModule extends Module {
 
+    private PostgreSQLConnector connector = null;
+
     @Override
     public void onInitialize(IBackendEngine backendEngine) {
-        PostgreSQLConnector connector = new PostgreSQLConnector(backendEngine);
+        this.connector = new PostgreSQLConnector(backendEngine);
         backendEngine.getDatabaseConnectorManager().registerConnector("postgresql", connector);
     }
 
     @Override
     public void start(IBackendEngine backendEngine) {
-        //
+        if (backendEngine.getLocalSettings().contains("PostgreSQL.autoConnect") && backendEngine.getLocalSettings().getBoolean("PostgreSQL.autoConnect")) {
+            this.connector.connect(backendEngine, backendEngine.getLocalSettings());
+        }
     }
 
     @Override
     public void stop() {
-        //
+        this.connector.close();
     }
 
 }
