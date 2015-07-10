@@ -44,6 +44,9 @@ public class ExampleMain {
         } catch (SessionNotFoundException e) {
             backendEngine.getLoggerManager().warn("Couldnt found session with session key " + sessionKey + ".");
         }
+
+        //remove session
+        sessionStore.removeSession("session-key");
     }
 
 }
