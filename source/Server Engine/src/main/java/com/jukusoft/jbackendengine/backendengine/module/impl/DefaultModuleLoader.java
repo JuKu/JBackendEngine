@@ -123,6 +123,7 @@ public class DefaultModuleLoader implements IModuleLoader {
         return classList;
     }
 
+    @SuppressWarnings("unchecked")
     private List<Class<IModule>> extractClassesFromJAR(File jarFile, ClassLoader classLoader) throws IOException {
 
         List<Class<IModule>> classList = new ArrayList<Class<IModule>>();
@@ -139,9 +140,6 @@ public class DefaultModuleLoader implements IModuleLoader {
                         classList.add((Class<IModule>) cls);
                     }
                 } catch (ClassNotFoundException e) {
-                    System.err.println("Cannot load class " + ent.getName() + ".");
-                    //e.printStackTrace();
-                } catch (NoClassDefFoundError e) {
                     System.err.println("Cannot load class " + ent.getName() + ".");
                     //e.printStackTrace();
                 }
