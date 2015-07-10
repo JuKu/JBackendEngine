@@ -106,6 +106,8 @@ public class DefaultModuleLoader implements IModuleLoader {
             } catch (IllegalAccessException e) {
                 System.err.println("IllegalAccess for module: " + module.getName() + ".");
                 e.printStackTrace();
+            } catch (NoClassDefFoundError e) {
+                System.err.println("NoClassDefFoundError for module: " + module.getName() + " " + e.getStackTrace() + ".");
             }
         }
 
