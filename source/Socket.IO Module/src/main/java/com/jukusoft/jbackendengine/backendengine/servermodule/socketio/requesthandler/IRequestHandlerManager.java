@@ -1,4 +1,4 @@
-package com.jukusoft.jbackendengine.backendengine.servermodule.socketio.requesthandler.impl;
+package com.jukusoft.jbackendengine.backendengine.servermodule.socketio.requesthandler;
 
 import com.corundumstudio.socketio.AckRequest;
 import com.corundumstudio.socketio.SocketIOClient;
