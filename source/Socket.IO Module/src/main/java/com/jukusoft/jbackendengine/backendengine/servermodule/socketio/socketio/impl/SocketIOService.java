@@ -6,6 +6,9 @@ import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 import com.corundumstudio.socketio.listener.ExceptionListener;
 import com.jukusoft.jbackendengine.backendengine.IBackendEngine;
+import com.jukusoft.jbackendengine.backendengine.servermodule.socketio.requesthandler.IRequestHandler;
+import com.jukusoft.jbackendengine.backendengine.servermodule.socketio.requesthandler.IRequestHandlerManager;
+import com.jukusoft.jbackendengine.backendengine.servermodule.socketio.requesthandler.impl.DefaultRequestHandlerManager;
 import com.jukusoft.jbackendengine.backendengine.servermodule.socketio.socketio.ISocketIOService;
 import com.jukusoft.jbackendengine.backendengine.serversettings.IServerSettings;
 import io.netty.channel.ChannelHandlerContext;
@@ -19,6 +22,7 @@ public class SocketIOService implements ISocketIOService {
 
     private IBackendEngine backendEngine = null;
     private SocketIOServer server = null;
+    private IRequestHandlerManager requestHandlerManager = new DefaultRequestHandlerManager();
 
     public SocketIOService (IBackendEngine backendEngine, Configuration config) {
         this.backendEngine = backendEngine;
@@ -134,6 +138,23 @@ public class SocketIOService implements ISocketIOService {
     @Override
     public void addDisconnectListener(DisconnectListener disconnectListener) {
         this.server.addDisconnectListener(disconnectListener);
+    }
+
+    @Override
+    public void registerRequestHandler(String eventname, IRequestHandler requestHandler) {
+        requestHandlerManager.registerRequestHandler(eventname, requestHandler);
+
+        this.addEventListener(eventname, String.class, new DataListener<String>() {
+            @Override
+            public void onData(SocketIOClient client, String s, AckRequest ackRequest) throws Exception {
+                requestHandlerManager.request(eventname, client, s, backendEngine, ackRequest);
+            }
+        });
+    }
+
+    @Override
+    public void removeRequestHandler(String eventname, IRequestHandler requestHandler) {
+        requestHandlerManager.removeRequestHandler(eventname, requestHandler);
     }
 
     @Override
