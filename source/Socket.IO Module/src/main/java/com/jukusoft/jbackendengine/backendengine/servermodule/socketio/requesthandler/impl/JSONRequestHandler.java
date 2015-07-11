@@ -24,9 +24,9 @@ public abstract class JSONRequestHandler implements IRequestHandler {
             session = backendEngine.getSessionStore().createNewSession(client.getSessionId().toString());
         }
 
-        this.request(jsonObject, client, session, ackRequest);
+        this.onJSONRequest(jsonObject, client, session, ackRequest);
     }
 
-    public abstract void request (JSONObject jsonObject, SocketIOClient client, ISession session, AckRequest ackRequest);
+    public abstract void onJSONRequest (JSONObject jsonObject, SocketIOClient client, ISession session, AckRequest ackRequest);
 
 }
