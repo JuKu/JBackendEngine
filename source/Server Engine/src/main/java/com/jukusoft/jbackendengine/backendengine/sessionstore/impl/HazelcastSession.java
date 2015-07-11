@@ -18,7 +18,7 @@ public class HazelcastSession implements ISession {
 
     private ISessionStore sessionStore = null;
     private String sessionKey = "";
-    private Map<String,String> dataMap = new HashMap<String,String>();
+    private Map<String,Object> dataMap = new HashMap<String,Object>();
     private Long dbInserted = 0l;
 
     public HazelcastSession (ISessionStore sessionStore, String sessionKey) {
@@ -75,7 +75,7 @@ public class HazelcastSession implements ISession {
 
     @Override
     public String getData(String key) {
-        return this.dataMap.get(key);
+        return (String) this.dataMap.get(key);
     }
 
     @Override
@@ -104,7 +104,7 @@ public class HazelcastSession implements ISession {
 
         JSONArray jsonArray = new JSONArray();
 
-        for (Map.Entry<String,String> entry : this.dataMap.entrySet()) {
+        for (Map.Entry<String,Object> entry : this.dataMap.entrySet()) {
             JSONObject jsonObject1 = new JSONObject();
             jsonObject1.put("key", entry.getKey());
             jsonObject1.put("value", entry.getValue());
