@@ -33,14 +33,18 @@ public class DefaultRequestHandlerManager implements IRequestHandlerManager {
     }
 
     @Override
-    public void request(String eventname, SocketIOClient client, String data, IBackendEngine backendEngine, AckRequest ackRequest) {
+    public boolean request(String eventname, SocketIOClient client, String data, IBackendEngine backendEngine, AckRequest ackRequest) {
         if (this.requestHandlerMap.containsKey(eventname)) {
             List<IRequestHandler> copyList = Collections.synchronizedList(requestHandlerMap.get(eventname));
 
             for (IRequestHandler requestHandler : copyList) {
                 requestHandler.onRequest(eventname, client, data, backendEngine, ackRequest);
             }
+
+            return copyList.size() > 0;
         }
+
+        return false;
     }
 
 }

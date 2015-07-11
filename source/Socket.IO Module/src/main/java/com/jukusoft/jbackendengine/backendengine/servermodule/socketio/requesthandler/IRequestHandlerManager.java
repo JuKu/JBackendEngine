@@ -12,6 +12,6 @@ public interface IRequestHandlerManager {
 
     public void registerRequestHandler (String eventname, IRequestHandler requestHandler);
     public void removeRequestHandler (String eventname, IRequestHandler requestHandler);
-    public void request (String eventname, SocketIOClient client, String data, IBackendEngine backendEngine, AckRequest ackRequest);
+    public boolean request (String eventname, SocketIOClient client, String data, IBackendEngine backendEngine, AckRequest ackRequest);
 
 }
