@@ -81,6 +81,11 @@ public class HazelcastSessionStore implements ISessionStore {
     }
 
     @Override
+    public ISession createNewSession(String sessionKey) {
+        return null;
+    }
+
+    @Override
     public void putSession(String sessionKey, ISession session) {
         this.sessionCache.putAsync(sessionKey, session.toJSON());
     }

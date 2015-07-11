@@ -69,8 +69,18 @@ public class HazelcastSession implements ISession {
     }
 
     @Override
+    public void putData(String key, Object obj) {
+        //
+    }
+
+    @Override
     public String getData(String key) {
         return this.dataMap.get(key);
+    }
+
+    @Override
+    public Object getObject(String key) {
+        return null;
     }
 
     @Override

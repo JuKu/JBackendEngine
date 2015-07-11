@@ -11,6 +11,7 @@ public interface ISessionStore {
     public ISession getSession (String sessionKey) throws SessionNotFoundException;
     public ISession createNewSession ();
     public ISession createNewSession (Long TTL);
+    public ISession createNewSession (String sessionKey);
     public void putSession (String sessionKey, ISession session);
     public void putSession (String sessionKey, ISession session, Long TTL);
     public void removeSession (String sessionKey);

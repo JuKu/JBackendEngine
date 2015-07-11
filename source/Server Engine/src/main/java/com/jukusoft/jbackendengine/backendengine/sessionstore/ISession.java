@@ -12,7 +12,9 @@ public interface ISession extends JSONConvertable {
     public Long getInsertedDate ();
     public boolean containsData (String key);
     public void putData (String key, String value);
+    public void putData (String key, Object obj);
     public String getData (String key);
+    public Object getObject (String key);
     public void commitData ();
 
 }
